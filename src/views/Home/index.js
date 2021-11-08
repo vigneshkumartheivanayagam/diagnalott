@@ -68,7 +68,6 @@ function Home(props) {
         // }
 
         if (window.innerHeight + document.documentElement.scrollTop === document.scrollingElement.scrollHeight) {
-            alert('At the bottom');
             getContent()
         }
     };
