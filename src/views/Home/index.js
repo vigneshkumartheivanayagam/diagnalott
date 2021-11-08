@@ -55,14 +55,19 @@ function Home(props) {
         //     getContent()
         // }
 
-        var pageHeight = document.documentElement.offsetHeight,
-            windowHeight = window.innerHeight,
-            scrollPosition = window.scrollY || window.pageYOffset || document.body.scrollTop + (document.documentElement && document.documentElement.scrollTop || 0);
+        // var pageHeight = document.documentElement.offsetHeight,
+        //     windowHeight = window.innerHeight,
+        //     scrollPosition = window.scrollY || window.pageYOffset || document.body.scrollTop + (document.documentElement && document.documentElement.scrollTop || 0);
 
-        // document.getElementById("val").innerHTML = pageHeight + ',' + windowHeight + ',' + scrollPosition;
+        // // document.getElementById("val").innerHTML = pageHeight + ',' + windowHeight + ',' + scrollPosition;
 
 
-        if (pageHeight <= windowHeight + scrollPosition) {
+        // if (pageHeight <= windowHeight + scrollPosition) {
+        //     alert('At the bottom');
+        //     getContent()
+        // }
+
+        if (window.innerHeight + document.documentElement.scrollTop === document.scrollingElement.scrollHeight) {
             alert('At the bottom');
             getContent()
         }
