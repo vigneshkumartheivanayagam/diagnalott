@@ -1,0 +1,61 @@
+@font-face {
+    font-family: "Titillium-Light";
+    src: url("../src/fonts/Titillium-Light.woff") format("woff");
+}
+
+body {
+    margin: 0;
+    font-family: Titillium-Light;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+}
+
+code {
+    font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New', monospace;
+}
+
+.navbar {
+    background-color: #000;
+    height: 80px;
+    align-items: center;
+}
+
+.navbar img {
+    height: 20px;
+}
+
+.navbar .back {
+    margin-right: 10px;
+}
+
+.heading {
+    font-size: 20px;
+    color: #FFF;
+}
+
+.contentsection {
+    padding-top: 120px;
+    padding-right: 15px;
+    padding-left: 15px;
+    background-color: #000;
+}
+
+.content-name {
+    font-size: 16px;
+    color: #fff;
+    margin-top: 24px;
+    text-align: left;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: 1;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    display: -webkit-box;
+}
+
+.content-card {
+    margin-bottom: 90px;
+}
+
+::-webkit-scrollbar {
+    display: none;
+}
