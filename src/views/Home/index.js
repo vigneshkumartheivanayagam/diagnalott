@@ -45,6 +45,7 @@ function Home(props) {
 
     const handleScroll = (e) => {
         if (window.innerHeight + window.scrollY >= document.body.offsetHeight) {
+            alert("Condition satisfied")
             getContent()
         }
     };
