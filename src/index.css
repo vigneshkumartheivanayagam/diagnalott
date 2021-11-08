@@ -38,7 +38,7 @@ code {
     padding-right: 15px;
     padding-left: 15px;
     background-color: #000;
-    height: calc(100% - 120px);
+    /* height: calc(100% - 120px); */
 }
 
 .content-name {
