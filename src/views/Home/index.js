@@ -94,7 +94,7 @@ function Home(props) {
         //     getContent()
         // }
 
-        if (e.target.offsetHeight + e.target.scrollTop >= e.target.clientHeight) {  
+        if (e.target.clientHeight + e.target.scrollTop === e.target.scrollHeight) {  
             getContent()
         }
 
