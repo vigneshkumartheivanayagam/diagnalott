@@ -1,7 +1,6 @@
 import React from 'react'
 import axios from 'axios'
 import Header from '../Header'
-import Contents from './Contents'
 import { useDispatch, useSelector } from 'react-redux'
 import { addContents } from "../../actions"
 import { LazyLoadImage } from 'react-lazy-load-image-component'
@@ -72,7 +71,6 @@ function Home(props) {
         <React.Fragment>
             <Header />
             <div className="container contentsection" id='content'>
-                {/* <Contents getContent={getContent} hasMore={hasMore} /> */}
                 <div className='row'>
                     {contents.length > 0 && (
                         contents.map((content, index) => {

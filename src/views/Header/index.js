@@ -31,7 +31,7 @@ function Header() {
                     )}
                     {showSearch && (
                         <div className="flex items-center w-100">
-                            <input type="text" placeholder="Search" onChange={(e) => handleInputChange(e.target.value)} autoFocus />
+                            <input type="text" placeholder="Search" onChange={(e) => handleInputChange(e.target.value)} className='form-control' autoFocus />
                             <button className="btn btn-link" type="button" onClick={clearSearch}>Cancel</button>
                         </div>
                     )}
