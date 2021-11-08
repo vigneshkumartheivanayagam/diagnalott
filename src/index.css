@@ -9,7 +9,6 @@ body {
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
     overflow-y: hidden;
-    position: relative;
 }
 
 code {
@@ -42,8 +41,6 @@ code {
     background-color: #000;
     height: calc(100vh - 80px);
     overflow-y: scroll;
-    display: flex;
-    position: relative;
     padding-bottom: 50px;
 }
 

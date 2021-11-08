@@ -13,8 +13,8 @@ function List(props) {
                         src={'static/images/' + props['poster-image']}
                         placeholderSrc={'static/images/placeholder_for_missing_posters.png'}
                         className="posterimg overflow-hidden"
-                        height='188px'
-                        width='120px'
+                        height='150px'
+                        width='100px'
                     />
                     <div className="flex flex-col">
                         <h2 className="content-name">{props.name}</h2>
