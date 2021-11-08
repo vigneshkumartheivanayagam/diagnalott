@@ -33,6 +33,9 @@ function Home(props) {
         if (!loading && hasMore.current) {
             setLoading(true)
             try {
+                if (page.current === 1) {
+                    dispatch(addContents([]))
+                }
                 let url = 'data/CONTENTLISTINGPAGE-PAGE' + page.current+'.json'
                 const result = await axios.get(url);
                 if (result !== undefined && result !== null && result.status !== undefined && result.status !== null && result.status === 200 && result.data !== undefined && result.data !== null && result.data.page !== undefined && result.data.page !== null && result.data.page['content-items'] !== undefined && result.data.page['content-items'] !== null && result.data.page['content-items'].content !== undefined && result.data.page['content-items'].content !== null && result.data.page['content-items'].content.length > 0) {
@@ -75,12 +78,19 @@ function Home(props) {
         //     getContent()
         // }
 
-        var content = document.getElementById('content')
-        var contentHeight = content.offsetHeight
-        var yOffset = window.pageYOffset
-        var y = yOffset + window.innerHeight
+        // var content = document.getElementById('content')
+        // var contentHeight = content.offsetHeight
+        // var yOffset = window.pageYOffset
+        // var y = yOffset + window.innerHeight
 
-        if(y >= contentHeight) {
+        // if(y >= contentHeight) {
+        //     getContent()
+        // }
+
+        const scrollbale = document.documentElement.scrollHeight - window.innerHeight
+        const scrolled = window.scrollY
+
+        if(scrolled === scrollbale) {
             getContent()
         }
     };
