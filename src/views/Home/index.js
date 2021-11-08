@@ -50,8 +50,20 @@ function Home(props) {
     }
 
     const handleScroll = (e) => {
-        if (window.innerHeight + window.scrollY >= (document.body.offsetHeight - 10)) {
-            alert("Condition satisfied")
+        // if (window.innerHeight + window.scrollY >= (document.body.offsetHeight - 10)) {
+        //     alert("Condition satisfied")
+        //     getContent()
+        // }
+
+        var pageHeight = document.documentElement.offsetHeight,
+            windowHeight = window.innerHeight,
+            scrollPosition = window.scrollY || window.pageYOffset || document.body.scrollTop + (document.documentElement && document.documentElement.scrollTop || 0);
+
+        // document.getElementById("val").innerHTML = pageHeight + ',' + windowHeight + ',' + scrollPosition;
+
+
+        if (pageHeight <= windowHeight + scrollPosition) {
+            alert('At the bottom');
             getContent()
         }
     };
