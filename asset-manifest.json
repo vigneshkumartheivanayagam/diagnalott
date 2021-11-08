@@ -1,0 +1,26 @@
+{
+  "files": {
+    "main.css": "/diagnalott/static/css/main.7a25a084.chunk.css",
+    "main.js": "/diagnalott/static/js/main.418891a2.chunk.js",
+    "main.js.map": "/diagnalott/static/js/main.418891a2.chunk.js.map",
+    "runtime-main.js": "/diagnalott/static/js/runtime-main.d2810395.js",
+    "runtime-main.js.map": "/diagnalott/static/js/runtime-main.d2810395.js.map",
+    "static/css/2.9c683b75.chunk.css": "/diagnalott/static/css/2.9c683b75.chunk.css",
+    "static/js/2.8571f2e5.chunk.js": "/diagnalott/static/js/2.8571f2e5.chunk.js",
+    "static/js/2.8571f2e5.chunk.js.map": "/diagnalott/static/js/2.8571f2e5.chunk.js.map",
+    "static/js/3.d985c13e.chunk.js": "/diagnalott/static/js/3.d985c13e.chunk.js",
+    "static/js/3.d985c13e.chunk.js.map": "/diagnalott/static/js/3.d985c13e.chunk.js.map",
+    "index.html": "/diagnalott/index.html",
+    "static/css/2.9c683b75.chunk.css.map": "/diagnalott/static/css/2.9c683b75.chunk.css.map",
+    "static/css/main.7a25a084.chunk.css.map": "/diagnalott/static/css/main.7a25a084.chunk.css.map",
+    "static/js/2.8571f2e5.chunk.js.LICENSE.txt": "/diagnalott/static/js/2.8571f2e5.chunk.js.LICENSE.txt",
+    "static/media/index.css": "/diagnalott/static/media/Titillium-Light.73d2839e.woff"
+  },
+  "entrypoints": [
+    "static/js/runtime-main.d2810395.js",
+    "static/css/2.9c683b75.chunk.css",
+    "static/js/2.8571f2e5.chunk.js",
+    "static/css/main.7a25a084.chunk.css",
+    "static/js/main.418891a2.chunk.js"
+  ]
+}
