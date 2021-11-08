@@ -44,6 +44,7 @@ code {
     overflow-y: scroll;
     display: flex;
     position: relative;
+    padding-bottom: 50px;
 }
 
 .content-name {
