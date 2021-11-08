@@ -18,21 +18,21 @@ function Header() {
     }
     return (
         <header>
-            <nav class="navbar fixed-top">
+            <nav className="navbar fixed-top">
                 <div className='container-fluid'>
                     {!showSearch && (
                         <React.Fragment>
-                            <ul class='navbar-nav align-items-center flex-row'>
+                            <ul className='navbar-nav align-items-center flex-row'>
                                 <li><img src={'static/images/Back.png'} alt='Back' className='back' /></li>
-                                <li><div class='heading'>Romantic Videos</div></li>
+                                <li><div className='heading'>Romantic Videos</div></li>
                             </ul>
                             <img src={'static/images/search.png'} alt='Search' className='search' onClick={() => setShowSearch(!showSearch)} />
                         </React.Fragment>
                     )}
                     {showSearch && (
-                        <div class="flex items-center w-100">
+                        <div className="flex items-center w-100">
                             <input type="text" placeholder="Search" onChange={(e) => handleInputChange(e.target.value)} autoFocus />
-                            <button class="btn btn-link" type="button" onClick={clearSearch}>Cancel</button>
+                            <button className="btn btn-link" type="button" onClick={clearSearch}>Cancel</button>
                         </div>
                     )}
                 </div>

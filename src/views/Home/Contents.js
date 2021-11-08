@@ -15,7 +15,7 @@ function Contents(props) {
 
     return (
         <React.Fragment>
-            <div class='row'>
+            <div className='row'>
                 {contents.length > 0 && (
                     contents.map((content, index) => {
                         return (

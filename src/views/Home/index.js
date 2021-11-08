@@ -13,6 +13,8 @@ function Home(props) {
     const [loading, setLoading] = React.useState(false)
 
     React.useEffect(() => {
+
+        // var el = document.getElementById('content')
         window.addEventListener('scroll', handleScroll)
         window['scrollTo']({ top: 0, behavior: 'smooth' })
 
@@ -28,20 +30,18 @@ function Home(props) {
 
     const getContent = async () => {
 
-        if(!loading) {
+        if (!loading && hasMore.current) {
             setLoading(true)
             try {
-                if (hasMore.current) {
-                    let url = 'data/CONTENTLISTINGPAGE-PAGE' + page.current+'.json'
-                    const result = await axios.get(url);
-                    if (result !== undefined && result !== null && result.status !== undefined && result.status !== null && result.status === 200 && result.data !== undefined && result.data !== null && result.data.page !== undefined && result.data.page !== null && result.data.page['content-items'] !== undefined && result.data.page['content-items'] !== null && result.data.page['content-items'].content !== undefined && result.data.page['content-items'].content !== null && result.data.page['content-items'].content.length > 0) {
-                        page.current = parseInt(page.current) + 1
-                        dispatch(addContents(result.data.page['content-items'].content))
-                    } else {
-                        hasMore.current = false
-                    }
-                    setLoading(false)
+                let url = 'data/CONTENTLISTINGPAGE-PAGE' + page.current+'.json'
+                const result = await axios.get(url);
+                if (result !== undefined && result !== null && result.status !== undefined && result.status !== null && result.status === 200 && result.data !== undefined && result.data !== null && result.data.page !== undefined && result.data.page !== null && result.data.page['content-items'] !== undefined && result.data.page['content-items'] !== null && result.data.page['content-items'].content !== undefined && result.data.page['content-items'].content !== null && result.data.page['content-items'].content.length > 0) {
+                    page.current = parseInt(page.current) + 1
+                    dispatch(addContents(result.data.page['content-items'].content))
+                } else {
+                    hasMore.current = false
                 }
+                setLoading(false)
             } catch(e) {
                 hasMore.current = false
                 setLoading(false)
@@ -67,16 +67,24 @@ function Home(props) {
         //     getContent()
         // }
 
+        // const bottom = e.target.scrollHeight - e.target.scrollTop === e.target.clientHeight;
+
+        // console.log("bottom ===> ", bottom)
+
         if (window.innerHeight + document.documentElement.scrollTop === document.scrollingElement.scrollHeight) {
             getContent()
         }
     };
+    
+    const handleContentScroll = (e) => {
+        console.log(e)
+    }
 
     return (
         <React.Fragment>
             <Header />
-            <div className="container contentsection ">
-                <Contents getContent={getContent} />
+            <div className="container contentsection" id='content'>
+                <Contents getContent={getContent} hasMore={hasMore} />
             </div>
         </React.Fragment>
         

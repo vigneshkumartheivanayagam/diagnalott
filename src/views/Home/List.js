@@ -3,7 +3,7 @@ import 'react-lazy-load-image-component/src/effects/blur.css'
 
 function List(props) {
     return (
-        <div class="col-4 content-card">
+        <div className="col-4 content-card">
             <div className=" relative">
                 <div className=" inset-0  w-full">
                     {/* <img className=" w-full object-cover object-center" src={process.env.REACT_APP_IMG_URL + props['poster-image']} /> */}
