@@ -14,8 +14,8 @@ function Home(props) {
 
     React.useEffect(() => {
 
-        // var el = document.getElementById('content')
-        window.addEventListener('scroll', handleScroll)
+        var el = document.getElementById('content')
+        el.addEventListener('scroll', handleScroll)
         window['scrollTo']({ top: 0, behavior: 'smooth' })
 
         setTimeout(function() {
@@ -87,12 +87,17 @@ function Home(props) {
         //     getContent()
         // }
 
-        const scrollbale = document.documentElement.scrollHeight - window.innerHeight
-        const scrolled = window.scrollY
+        // const scrollbale = document.documentElement.scrollHeight - window.innerHeight
+        // const scrolled = window.scrollY
 
-        if(scrolled === scrollbale) {
+        // if(scrolled === scrollbale) {
+        //     getContent()
+        // }
+
+        if (e.target.offsetHeight + e.target.scrollTop >= e.target.scrollHeight) {  
             getContent()
         }
+
     };
 
 

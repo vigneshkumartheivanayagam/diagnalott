@@ -8,6 +8,8 @@ body {
     font-family: Titillium-Light;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
+    overflow-y: hidden;
+    position: relative;
 }
 
 code {
@@ -34,11 +36,14 @@ code {
 }
 
 .contentsection {
-    padding-top: 120px;
+    margin-top: 80px;
     padding-right: 15px;
     padding-left: 15px;
     background-color: #000;
-    /* height: calc(100% - 120px); */
+    height: calc(100vh - 80px);
+    overflow-y: scroll;
+    display: flex;
+    position: relative;
 }
 
 .content-name {
