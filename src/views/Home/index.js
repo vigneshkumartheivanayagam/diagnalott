@@ -2,8 +2,11 @@ import React from 'react'
 import axios from 'axios'
 import Header from '../Header'
 import Contents from './Contents'
-import { useDispatch } from 'react-redux'
+import { useDispatch, useSelector } from 'react-redux'
 import { addContents } from "../../actions"
+import { LazyLoadImage } from 'react-lazy-load-image-component'
+import 'react-lazy-load-image-component/src/effects/blur.css'
+import useInView from "react-cool-inview"
 
 function Home(props) {
 
@@ -12,21 +15,33 @@ function Home(props) {
     let page = React.useRef(1)
     const [loading, setLoading] = React.useState(false)
 
-    React.useEffect(() => {
+    let contents = useSelector(state => state.contentReducer.contents)
+    let filteredContents = useSelector(state => state.contentReducer.filtered)
+    let searchKey = useSelector(state => state.contentReducer.searchKey)
 
-        var el = document.getElementById('content')
-        el.addEventListener('scroll', handleScroll)
+    if (searchKey !== '') {
+        contents = filteredContents
         window['scrollTo']({ top: 0, behavior: 'smooth' })
+    }
 
-        setTimeout(function() {
-            getContent()
-        }, 1000)
-
+    React.useEffect(() => {
+        window['scrollTo']({ top: 0, behavior: 'smooth' })
+        getContent()
         return () => {
             page.current = 1
             hasMore.current = true
         }
     }, [])
+
+
+    const { observe } = useInView({
+        rootMargin: "50px 0px",
+        onEnter: ({ unobserve, observe }) => {
+            unobserve();
+            getContent()
+            observe();
+        },
+    });
 
     const getContent = async () => {
 
@@ -52,60 +67,38 @@ function Home(props) {
         }
     }
 
-    const handleScroll = (e) => {
-        // if (window.innerHeight + window.scrollY >= (document.body.offsetHeight - 10)) {
-        //     alert("Condition satisfied")
-        //     getContent()
-        // }
-
-        // var pageHeight = document.documentElement.offsetHeight,
-        //     windowHeight = window.innerHeight,
-        //     scrollPosition = window.scrollY || window.pageYOffset || document.body.scrollTop + (document.documentElement && document.documentElement.scrollTop || 0);
-
-        // // document.getElementById("val").innerHTML = pageHeight + ',' + windowHeight + ',' + scrollPosition;
-
-
-        // if (pageHeight <= windowHeight + scrollPosition) {
-        //     alert('At the bottom');
-        //     getContent()
-        // }
-
-        // const bottom = e.target.scrollHeight - e.target.scrollTop === e.target.clientHeight;
-
-        // console.log("bottom ===> ", bottom)
-
-        // if (window.innerHeight + document.documentElement.scrollTop === document.scrollingElement.scrollHeight) {
-        //     getContent()
-        // }
-
-        // var content = document.getElementById('content')
-        // var contentHeight = content.offsetHeight
-        // var yOffset = window.pageYOffset
-        // var y = yOffset + window.innerHeight
-
-        // if(y >= contentHeight) {
-        //     getContent()
-        // }
-
-        // const scrollbale = document.documentElement.scrollHeight - window.innerHeight
-        // const scrolled = window.scrollY
-
-        // if(scrolled === scrollbale) {
-        //     getContent()
-        // }
-
-        if (e.target.clientHeight + e.target.scrollTop === e.target.scrollHeight) {  
-            getContent()
-        }
-
-    };
-
 
     return (
         <React.Fragment>
             <Header />
             <div className="container contentsection" id='content'>
-                <Contents getContent={getContent} hasMore={hasMore} />
+                {/* <Contents getContent={getContent} hasMore={hasMore} /> */}
+                <div className='row'>
+                    {contents.length > 0 && (
+                        contents.map((content, index) => {
+                            return (
+                                <div className="col-4 content-card" ref={index === contents.length - 1 ? observe : null} key={'list-'+index}>
+                                    <div className=" relative">
+                                        <div className=" inset-0  w-full">
+                                            <LazyLoadImage
+                                                alt={'...'}
+                                                effect="blur"
+                                                src={'static/images/' + content['poster-image']}
+                                                placeholderSrc={'static/images/placeholder_for_missing_posters.png'}
+                                                className="posterimg overflow-hidden"
+                                                height='150px'
+                                                width='100px'
+                                            />
+                                            <div className="flex flex-col">
+                                                <h2 className="content-name">{content.name}</h2>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            )
+                        })
+                    )}
+                </div>
             </div>
         </React.Fragment>
         
