@@ -71,14 +71,20 @@ function Home(props) {
 
         // console.log("bottom ===> ", bottom)
 
-        if (window.innerHeight + document.documentElement.scrollTop === document.scrollingElement.scrollHeight) {
+        // if (window.innerHeight + document.documentElement.scrollTop === document.scrollingElement.scrollHeight) {
+        //     getContent()
+        // }
+
+        var content = document.getElementById('content')
+        var contentHeight = content.offsetHeight
+        var yOffset = window.pageYOffset
+        var y = yOffset + window.innerHeight
+
+        if(y >= contentHeight) {
             getContent()
         }
     };
-    
-    const handleContentScroll = (e) => {
-        console.log(e)
-    }
+
 
     return (
         <React.Fragment>
